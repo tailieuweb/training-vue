@@ -37,11 +37,6 @@
 import Datepicker from "vuejs-datepicker";
 export default {
   name: "editemployee",
-  data() {
-    return {
-      previewImage: null,
-    };
-  },
   props: {
     employee: Object
   },
@@ -55,13 +50,3 @@ export default {
   }
 };
 </script>
-<style >
-.form {
-  margin-top: 40px;
-  margin-bottom: 50px;
-}
-.uploading-image {
-  width: 30%;
-  height: 30%;
-}
-</style>

@@ -110,11 +110,9 @@
 <script>
 import editemployee from "../components/addNew";
 export default {
-  name: "App",
+  name: "TodoList",
   data() {
     return {
-      selec: "example1",
-      Example: "hello",
       list: [
         {
           id: 1,
