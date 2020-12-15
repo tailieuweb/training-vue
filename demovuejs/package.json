@@ -17,6 +17,7 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-moment": "^4.1.0",
+    "vuejs-datepicker": "^1.6.2",
     "vuejs-paginate": "^2.1.0"
   },
   "devDependencies": {

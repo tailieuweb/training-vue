@@ -1,19 +1,18 @@
 import Vue from 'vue'
-import App from './App.vue'
-
-
+import App from './App'
 import 'bootstrap/dist/css/bootstrap.min.css'
-
-
-import {library} from '@fortawesome/fontawesome-svg-core'
-import {faSpinner} from '@fortawesome/free-solid-svg-icons'
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
-
-Vue.use.BootstrapVue;
+import { BootstrapVue,BootstrapVueIcons  } from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
+import "../src/assets/style.css"
+Vue.use(BootstrapVue,BootstrapVueIcons)
 Vue.config.productionTip = false
-library.add(faSpinner)
-Vue.component('font-awesome-icon', FontAwesomeIcon)
 
+/* eslint-disable no-new */
 new Vue({
+  el: '#app',
   render: h => h(App),
-}).$mount('#app')
+  components: { App },
+  template: '<App/>'
+})
