@@ -113,12 +113,7 @@ export default {
       this.currentPage = pageNumber;
     },
     sort: function(s) {
-      //if s == current sort, reverse
-      if (s === this.currentSort) {
-        this.currentSortDir = this.currentSortDir === "asc" ? "desc" : "asc";
-        console.log(this.currentSortDir);
-      }
-      this.currentSort = s;
+     this.$emit("sort", s);
     },
     clickEdit(item) {
       this.$emit("edit", item);

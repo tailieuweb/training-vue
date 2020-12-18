@@ -30,6 +30,7 @@
         @edit="clickEdit"
         @delete="clickDelete"
         @toggleTodo="toggleTodo"
+        @sort="sort"
       />
     </div>
   </div>
@@ -125,7 +126,14 @@ export default {
       let index = this.list.findIndex((items) => items.id == employee.id);
       this.list.splice(index, 1);
     },
-
+    sort: function(s) {
+      //if s == current sort, reverse
+      if (s === this.currentSort) {
+        this.currentSortDir = this.currentSortDir === "asc" ? "desc" : "asc";
+        console.log(this.currentSortDir);
+      }
+      this.currentSort = s;
+    },
     toggleTodo(todo) {
       todo.completed = !todo.completed;
     },
