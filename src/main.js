@@ -5,7 +5,7 @@ import { BootstrapVue,BootstrapVueIcons  } from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
-import "../src/assets/style.css"
+import "../src/assets/style.scss"
 Vue.use(BootstrapVue,BootstrapVueIcons)
 Vue.config.productionTip = false
 

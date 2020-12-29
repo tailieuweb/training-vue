@@ -1,0 +1,113 @@
+//colors
+$color_cornflower_blue_approx: #7093f3;
+$white: #fff;
+$black: #000;
+
+//fonts
+$font_0: Avenir;
+$font_1: Helvetica;
+$font_2: Arial;
+$font_3: sans-serif;
+
+#app {
+	font-family: $font_0, $font_1, $font_2, $font_3;
+	margin-top: 10px;
+	margin-bottom: 30px;
+}
+#comp {
+	margin-top: 50px;
+}
+.add {
+	margin-top: 30px;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+.input-group {
+	background: $color_cornflower_blue_approx;
+	margin-bottom: 10px;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 7px;
+	padding: 5px;
+	&.md-form.form-sm {
+		&.form-1 input {
+			//Instead of the line below you could use @include border-top-right-radius($radius)
+			border-top-right-radius: 0.25rem;
+			//Instead of the line below you could use @include border-bottom-right-radius($radius)
+			border-bottom-right-radius: 0.25rem;
+		}
+		&.form-2 input {
+			background: $color_cornflower_blue_approx;
+			//Instead of the line below you could use @include border-top-left-radius($radius)
+			border-top-left-radius: 0.25rem;
+			//Instead of the line below you could use @include border-bottom-left-radius($radius)
+			border-bottom-left-radius: 0.25rem;
+		}
+	}
+}
+.btn-add-new {
+	background: $white;
+	color: $black;
+}
+.table {
+	border-style: solid;
+	border-color: $color_cornflower_blue_approx;
+	cursor: pointer;
+}
+.img {
+	width: 50%;
+	height: 30%;
+}
+.addnew {
+	margin: 20px;
+}
+.search {
+	margin: 20px;
+	margin-left: -5px;
+	width: 72%;
+}
+.title {
+	font-size: 25px;
+	margin: 20px;
+}
+.done {
+	text-decoration: line-through;
+}
+ul {
+	list-style: none;
+	display: flex;
+	justify-content: center;
+}
+li {
+	background: $color_cornflower_blue_approx;
+	padding: 8px 15px;
+	//Instead of the line below you could use @include border-radius($radius, $vertical-radius)
+	border-radius: 5px;
+	margin-right: 5px;
+}
+a {
+	text-decoration: none !important;
+	color: $black;
+}
+.item-title {
+	width: 200px;
+	//Instead of the line below you could use @include word-break($value)
+	word-break: break-all;
+}
+.item-desc {
+	width: 400px;
+	//Instead of the line below you could use @include word-break($value)
+	word-break: break-all;
+}
+.item-date {
+	width: 450px;
+	//Instead of the line below you could use @include word-break($value)
+	word-break: break-all;
+}
+.form {
+	margin-top: 40px;
+	margin-bottom: 50px;
+}
+.uploading-image {
+	width: 30%;
+	height: 30%;
+}
