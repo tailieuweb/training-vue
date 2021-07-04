@@ -1,5 +1,6 @@
 # training-vue
-
+@Date: 04/07/2021
+@Location: Alone
 * node -v
 ```
 Kiểm tra version của node, v14.16.0
