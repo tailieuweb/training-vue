@@ -42,17 +42,17 @@ export default {
         btnPrev() {
             if (this.attrs.page > 1) {
                 this.attrs.page = this.attrs.page - 1;
-            }
+            }            
             this.setProductsOnPage(this.attrs.page);
         },
         btnNext() {
-            if (this.attrs.page == this.attrs.links - 1) {
+            if (this.attrs.page <= this.attrs.links - 1) {
                 this.attrs.page = this.attrs.page + 1;
-            }
+            }            
             this.setProductsOnPage(this.attrs.page);
         },
-        btnLink(link) {
-            
+        btnLink(link) {  
+            this.attrs.page = link;          
             this.setProductsOnPage(link);
         },
         setAttributes() {
