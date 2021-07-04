@@ -12,8 +12,8 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="product in sub_products" :key="product.id">
-        <td>#</td>
+      <tr v-for="(product, index) in sub_products" :key="product.id">
+        <td>{{counter + index + 1}}</td>
         <td>{{ product.title }}</td>        
         <td>
           <img v-if="product.image" class="product-image" :src="`http://127.0.0.1:8000/upload/${product.image}`" />
@@ -42,6 +42,7 @@ export default {
     return {
       products: [],      
       sub_products: [],
+      counter: 1    
     }
   },
   methods: {
@@ -52,8 +53,7 @@ export default {
         headers: {
           'Access-Control-Allow-Origin': '*',          
         },        
-      }).then((response) => {   
-        console.log(response);
+      }).then((response) => {           
         this.products = response.data.data;
 
         //EventBus
@@ -61,8 +61,9 @@ export default {
       })
     },
     getSubProduts() {
-      EventBus.$on('eSetProductsOnPage', (sub_products) => {
-        this.sub_products = sub_products;
+      EventBus.$on('eSetProductsOnPage', (_products) => {        
+        this.sub_products = _products.sub_products;
+        this.counter = _products.counter;
       })
     }
 

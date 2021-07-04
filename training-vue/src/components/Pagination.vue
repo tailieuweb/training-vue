@@ -1,16 +1,21 @@
 <template>
   <nav aria-label="Page navigation example">
-  <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    
-    <li v-for="link in attrs.links" :key="link" @click="btnLink(link)" class="page-item">
-        <a class="page-link" href="#">
-            {{link}}
-        </a>
-    </li>
+    <ul class="pagination">
+
+        <li class="page-item" @click="btnPrev()">
+            <a class="page-link" href="#">Previous</a>
+        </li>
         
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-  </ul>
+        <li v-for="link in attrs.links" :key="link" @click="btnLink(link)" class="page-item">
+            <a class="page-link" href="#">
+                {{link}}
+            </a>
+        </li>
+            
+        <li class="page-item" @click="btnNext()">
+            <a class="page-link" href="#">Next</a>
+        </li>
+    </ul>
 </nav>
 </template>
 
@@ -24,7 +29,7 @@ export default {
     data() {
         return {
             attrs : {
-                per_page : 2,
+                per_page : 5,
                 items : 0,
                 links : 0,
                 page : 1
@@ -34,15 +39,24 @@ export default {
         }
     },
     methods: {
+        btnPrev() {
+            if (this.attrs.page > 1) {
+                this.attrs.page = this.attrs.page - 1;
+            }
+            this.setProductsOnPage(this.attrs.page);
+        },
+        btnNext() {
+            if (this.attrs.page == this.attrs.links - 1) {
+                this.attrs.page = this.attrs.page + 1;
+            }
+            this.setProductsOnPage(this.attrs.page);
+        },
         btnLink(link) {
-            console.log(link);
+            
             this.setProductsOnPage(link);
         },
         setAttributes() {
-            EventBus.$on('eGetProducts', (products) => {
-                console.log('loadProducts');
-                console.log(products);
-
+            EventBus.$on('eGetProducts', (products) => {                
                 //set products
                 this.products = products;
                 //set items
@@ -52,8 +66,7 @@ export default {
                     this.attrs.links = Math.ceil(products.length / this.attrs.per_page);
                 }
                 
-                //show attrs
-                console.log(this.attrs);
+                //show attrs            
                 this.setProductsOnPage(1);
             });
         },
@@ -66,9 +79,11 @@ export default {
             
             this.sub_products = this.products.slice(fromIndex, toIndex);
 
-            EventBus.$emit('eSetProductsOnPage', this.sub_products);
-            console.log('setProductsOnPage');
-            console.log(this.sub_products);
+            EventBus.$emit('eSetProductsOnPage', {
+                    sub_products: this.sub_products, 
+                    counter: page * this.attrs.per_page - this.attrs.per_page
+                });             
+
         }
     },
     created() {
