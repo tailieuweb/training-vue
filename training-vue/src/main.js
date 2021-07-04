@@ -7,6 +7,7 @@ import axios from "axios";
 import VueAxios from "vue-axios";
 
 // Vue.use(createPopper);
+export const EventBus = new Vue();
 
 Vue.use(VueAxios, axios);
 

@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <h3 class="p-3 text-center">List of products</h3>
+    <h3 class="p-3 text-center">List of products</h3>    
+    <Pagination/>
     <table class="table table-striped table-bordered">
       <thead>
       <tr>
@@ -11,7 +12,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr v-for="product in products" :key="product.id">
+      <tr v-for="product in sub_products" :key="product.id">
         <td>#</td>
         <td>{{ product.title }}</td>        
         <td>
@@ -25,43 +26,50 @@
         </td>
       </tr>
       </tbody>
-    </table>
+    </table>    
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import {EventBus} from '../main';
+import Pagination from './Pagination.vue';
 
 export default {
+  components: { Pagination },
   name: 'products',
   data() {
     return {
-      products: [          
-      ],
-      perPage: 10,
-      page: 1,
-      total: 0,
+      products: [],      
+      sub_products: [],
     }
   },
   methods: {
-    setTotal () {
-
-    },
-    getAllProduct() {
+    
+    getProducts() {
       let uri = "http://127.0.0.1:8000/products";
       axios.get(uri, { 
         headers: {
           'Access-Control-Allow-Origin': '*',          
         },        
       }).then((response) => {   
+        console.log(response);
         this.products = response.data.data;
+
+        //EventBus
+        EventBus.$emit("eGetProducts", this.products);
+      })
+    },
+    getSubProduts() {
+      EventBus.$on('eSetProductsOnPage', (sub_products) => {
+        this.sub_products = sub_products;
       })
     }
 
   },
-  created() {    
-    this.setTotal();    
-    this.getAllProduct();
+  created() {        
+    this.getProducts();
+    this.getSubProduts();   
   },
   mounted() {
 
