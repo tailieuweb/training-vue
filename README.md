@@ -40,3 +40,8 @@ Chạy server
 ```
 Cài đặt router
 ```
+
+* references
+```
+1. https://code.tutsplus.com/tutorials/design-patterns-for-communication-between-vuejs-component--cms-32354
+```

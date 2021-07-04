@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <h3 class="p-3 text-center">List of products</h3>    
-    <Pagination/>
+    <Pagination v-bind:counter.sync="counter"/>
     <table class="table table-striped table-bordered">
       <thead>
       <tr>
@@ -63,7 +63,7 @@ export default {
     getSubProduts() {
       EventBus.$on('eSetProductsOnPage', (_products) => {        
         this.sub_products = _products.sub_products;
-        this.counter = _products.counter;
+        //this.counter = _products.counter;
       })
     }
 
