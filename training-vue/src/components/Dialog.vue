@@ -92,9 +92,9 @@ export default {
         let formData = new FormData();
         formData.append("title", this.product.title);
         formData.append("description", this.product.description);
-        formData.append("_method", "PUT");
 
-        let uri = "http://127.0.0.1:8000/products/" + this.product.id;
+
+        let uri = "http://127.0.0.1:8000/products/" + this.product.id ;
         console.log(uri);
         axios.post(uri, formData, config).then((response) => {
           console.log(response);
