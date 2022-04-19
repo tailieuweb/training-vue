@@ -7,8 +7,12 @@ export default new Router({
     mode: "history",
     routes: [
         {
-            path: "/",
-            alias: "/products",
+            path: "/",            
+            name: "home",
+            component: () => import("./components/Home")
+        },
+        {
+            path: "/products",            
             name: "products",
             component: () => import("./components/ProductList")
         },

@@ -6,10 +6,15 @@
         <div class="modal-wrapper">
           <!-- Form element -->
           <div class="modal-container">
+            
             <div class="modal-header">
               <slot name="header">
                 default header
               </slot>
+            </div>
+
+            <div class="dialog-message">
+                {{message}}
             </div>
 
             <div class="modal-body">
@@ -73,6 +78,14 @@
 import axios from "axios";
 export default {
     name: "Dialog",
+    data() {
+      return {
+        message: {
+          default: null,
+          type: String
+        }
+      }      
+    },
     props: {
       product: {
         default: null,
@@ -97,7 +110,11 @@ export default {
         let uri = "http://127.0.0.1:8000/products/" + this.product.id ;
         console.log(uri);
         axios.post(uri, formData, config).then((response) => {
-          console.log(response);
+          if (response.data.success) {
+            this.message = 'Update successful';
+          } else {
+            this.message = 'Update failed';
+          }
         });
 
       },
