@@ -1,47 +1,24 @@
 # training-vue
-@Date: 04/07/2021
-@Location: Alone
-* node -v
+
+## Project setup
 ```
-Kiểm tra version của node, v14.16.0
+npm install
 ```
 
-* npm -v
+### Compiles and hot-reloads for development
 ```
-Kiểm tra version của npm, v6.14.1
-```
-
-* npm install -g @vue/cli
-```
-Cài đặt
+npm run serve
 ```
 
-* vue --version
+### Compiles and minifies for production
 ```
-Kiểm tra version của Vue
-```
-
-* vue create PROJECT_NAME
-```
-Tạo project với Vue
+npm run build
 ```
 
-* npm v vue 
+### Lints and fixes files
 ```
-Kiểm tra version của Vue
-```
-
-* npm run serve
-```
-Chạy server
+npm run lint
 ```
 
-* npm install vue-router
-```
-Cài đặt router
-```
-
-* references
-```
-1. https://code.tutsplus.com/tutorials/design-patterns-for-communication-between-vuejs-component--cms-32354
-```
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
