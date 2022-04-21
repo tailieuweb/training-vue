@@ -12,7 +12,7 @@
               </slot>
             </div>
 
-            <div class="dialog-message">
+            <div class="dialog-message" v-if="message">
               {{ message }}
             </div>
 
@@ -30,11 +30,33 @@
                   class="form-control">
                 </textarea>
               </div>
+
               <!-- Image -->
               <div class="form-group text-left">
                 <label for="image">Image</label>
-                <input type="file" :disable="action == 'show-product' ? true : false" class="form-control mt-2"
-                  v-on:change="onFileChange" />
+                <input 
+                  type="file" 
+                  :disable="action == 'show-product' ? true : false" 
+                  class="form-control mt-2"
+                  v-on:change="onFileChange" 
+                  accept="image/*"
+                />
+              </div>
+
+              <!-- Preview Image -->
+              <div class="form-group text-left preview-image" v-if="previewImage.url">
+                <div class="row">
+                  <div class="col-md-4" >
+                     <img :src="previewImage.url" />
+                  </div>
+                  <div class="col-md-8" v-if="previewImage.name">
+                    <span>Name: {{previewImage.name}}</span><br>
+                    <span>Type: {{previewImage.type}}</span><br>
+                    <span>Size: {{previewImage.size}}</span><br>
+                  </div>
+                </div>
+                  
+
               </div>
             </div>
 
@@ -60,11 +82,15 @@ export default {
   name: "Dialog",
   data() {
     return {
-      message: {
-        default: null,
-        type: String
+      message: null,
+      file: null,
+      // preview image
+      previewImage: {
+        url: null,
+        title: null,
+        size: null,
+        type: null
       },
-      file: null
     }
   },
   props: {
@@ -129,69 +155,34 @@ export default {
         this.addProduct();
       }
     },
+    /**
+     * Select file: send to server when submitting, preview selected image
+     * @param {*} e 
+     */
     onFileChange(e) {
-      console.log(e.target.files[0]);
+      console.log(e.target.files[0]);      
       this.file = e.target.files[0];
+
+      // Preview selected image
+      this.previewImage.url = URL.createObjectURL(this.file);
+      this.previewImage.name = this.file.name;
+      this.previewImage.size = this.file.size;
+      this.previewImage.type = this.file.type;
     },
 
-  }
+  },//end method
+
+  created() {
+    //Set preview image
+    console.log(this.product);
+    if (this.product.image) {
+      this.previewImage.url = 'http://127.0.0.1:8000/upload/' + this.product.image;
+    }
+  },//end created
 }
 </script>
 
 
 <style>
-.modal-mask {
-  position: fixed;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: table;
-  transition: opacity 0.3s ease;
-}
 
-.modal-wrapper {
-  display: table-cell;
-  vertical-align: middle;
-}
-
-.modal-container {
-  width: 60%;
-  margin: 0px auto;
-  padding: 20px 30px;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all 0.3s ease;
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-.modal-header h3 {
-  margin-top: 0;
-  color: #42b983;
-}
-
-.modal-body {
-  margin: 20px 0;
-}
-
-.modal-default-button {
-  float: right;
-}
-
-.modal-enter {
-  opacity: 0;
-}
-
-.modal-leave-active {
-  opacity: 0;
-}
-
-.modal-enter .modal-container,
-.modal-leave-active .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
 </style>

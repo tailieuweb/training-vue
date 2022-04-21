@@ -1,13 +1,14 @@
 <template>
   <div id="app">
     <Nav></Nav>
-    <div class="container mt-3">
+    <div class="">
       <router-view />
     </div>
   </div>
 </template>
 
 <script>
+
 import Nav from './components/Nav.vue'
 
 export default {
@@ -19,6 +20,7 @@ export default {
 </script>
 
 <style>
+@import './assets/styles/styles.css';
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
