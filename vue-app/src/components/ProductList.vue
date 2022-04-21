@@ -18,7 +18,7 @@
         <i class="fa fa-plus"></i>
     </button>
 
-    <Pagination v-bind:counter.sync="counter"/>
+    
     <table class="table table-striped table-bordered">
       <thead>
       <tr>
@@ -57,7 +57,8 @@
         </td>
       </tr>
       </tbody>
-    </table>    
+    </table>  
+    <Pagination v-bind:counter.sync="counter"/>  
   </div>
 </template>
 

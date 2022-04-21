@@ -1,4 +1,3 @@
-<!-- https://getbootstrap.com/docs/4.0/components/modal/ -->
 <template>
   <div>
     <transition name="modal">
