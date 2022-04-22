@@ -3,7 +3,7 @@
     <h3 class="p-3 text-center">List of products</h3>
 
     <Dialog v-if="dialog.showModal" 
-      @close="dialog.showModal = false" 
+      @close="closeDialog()" 
       :product="dialog.product" 
       :action="dialog.action">
       <h3 slot="header" v-if="dialog.action === 'add-product'">Add product</h3>
@@ -96,6 +96,7 @@ export default {
     closeDialog() {
       this.getProducts();
       this.getSubProduts();
+      this.dialog.showModal = false;
     },
 
     // Get list of products

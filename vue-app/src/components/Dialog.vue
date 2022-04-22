@@ -113,11 +113,13 @@ export default {
       let formData = new FormData();
       formData.append("title", this.product.title);
       formData.append("description", this.product.description);
-      formData.append("image", this.file);
 
+      if(this.file) {
+        formData.append("image", this.file);
+      }
 
-      let uri =  this.baseUrl + "/" + this.product.id;
-      console.log(uri);
+      let uri =  this.baseUrl + "/products/" + this.product.id;
+      
       axios.post(uri, formData, config).then((response) => {
         if (response.data.success) {
           this.message = 'Update successful';
