@@ -76,11 +76,13 @@ export default {
             var fromIndex = toIndex - this.attrs.per_page;
             
             this.sub_products = this.products.slice(fromIndex, toIndex);
-            var temp_counter =  page * this.attrs.per_page - this.attrs.per_page
+            var temp_counter =  page * this.attrs.per_page - this.attrs.per_page;
+
             this.$emit('update:counter', temp_counter);
+
             EventBus.$emit('eSetProductsOnPage', {
-                    sub_products: this.sub_products, 
-                });             
+                    sub_products: this.sub_products
+            });             
 
         }
     },
