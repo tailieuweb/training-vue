@@ -1,0 +1,11 @@
+#-----------------------------------------------------
+# Application Environment
+#-----------------------------------------------------
+APP_ENV = development
+
+
+# API のBaseURL
+VUE_APP_API_BASE_URL = http://localhost:8000/
+
+VUE_APP_MY_ENV_VARIABLE = 1
+VUE_APP_TEST = 3

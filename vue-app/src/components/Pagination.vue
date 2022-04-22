@@ -80,7 +80,6 @@ export default {
             this.$emit('update:counter', temp_counter);
             EventBus.$emit('eSetProductsOnPage', {
                     sub_products: this.sub_products, 
-                    //counter: page * this.attrs.per_page - this.attrs.per_page
                 });             
 
         }

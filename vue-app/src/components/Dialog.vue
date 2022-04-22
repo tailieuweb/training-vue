@@ -82,6 +82,7 @@ export default {
   name: "Dialog",
   data() {
     return {
+      baseUrl: process.env.VUE_APP_API_BASE_URL,
       message: null,
       file: null,
       // preview image
@@ -115,7 +116,7 @@ export default {
       formData.append("image", this.file);
 
 
-      let uri = "http://127.0.0.1:8000/products/" + this.product.id;
+      let uri =  this.baseUrl + "/" + this.product.id;
       console.log(uri);
       axios.post(uri, formData, config).then((response) => {
         if (response.data.success) {
@@ -137,7 +138,7 @@ export default {
       formData.append("image", this.file);
 
 
-      let uri = "http://127.0.0.1:8000/products";
+      let uri = this.baseUrl + "/products";
       console.log(uri);
       axios.post(uri, formData, config).then((response) => {
         if (response.data.success) {
@@ -176,7 +177,7 @@ export default {
     //Set preview image
     console.log(this.product);
     if (this.product.image) {
-      this.previewImage.url = 'http://127.0.0.1:8000/upload/' + this.product.image;
+      this.previewImage.url = process.env.VUE_APP_API_BASE_URL + '/upload/' + this.product.image;
     }
   },//end created
 }

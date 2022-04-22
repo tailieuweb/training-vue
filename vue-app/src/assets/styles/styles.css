@@ -55,3 +55,8 @@
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
   }
+
+  .product-image {
+    max-width: 100px;
+    height: 50px;
+  }
